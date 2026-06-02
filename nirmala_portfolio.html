@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nirmala Saini — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #faf9f7;
+    --surface: #f2f0ec;
+    --border: rgba(0,0,0,0.1);
+    --border-strong: rgba(0,0,0,0.18);
+    --text: #1a1916;
+    --muted: #6b6860;
+    --hint: #a09d97;
+    --accent: #2a4a3e;
+    --accent-light: #e8eeec;
+    --radius: 10px;
+    --radius-lg: 14px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,249,247,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    height: 56px;
+  }
+  .nav-name { font-size: 14px; font-weight: 500; letter-spacing: .01em; }
+  .nav-links { display: flex; gap: 1.75rem; }
+  .nav-links a {
+    font-size: 13px; color: var(--muted); text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* LAYOUT */
+  .container { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* HERO */
+  .hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 4rem;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent);
+    background: var(--accent-light);
+    padding: 4px 12px; border-radius: 99px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+    letter-spacing: -.01em;
+  }
+  .hero h1 span { color: var(--muted); }
+  .hero-sub {
+    font-size: 17px; color: var(--muted);
+    max-width: 520px; line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 13px; color: var(--hint);
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 5px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    font-size: 13px; font-family: 'DM Sans', sans-serif;
+    padding: 9px 20px; border-radius: var(--radius);
+    border: 0.5px solid var(--border-strong);
+    background: transparent; color: var(--text);
+    cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 7px;
+    transition: background .18s, transform .12s;
+    font-weight: 400;
+  }
+  .btn:hover { background: var(--surface); }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    border-color: var(--accent);
+  }
+  .btn-primary:hover { background: #1e3830; }
+
+  /* SECTIONS */
+  section { margin-bottom: 4rem; }
+  .sec-label {
+    font-size: 11px; font-weight: 500; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--hint);
+    margin-bottom: 1.5rem;
+    padding-bottom: .6rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+  }
+  .skill-group {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: .9rem 1rem;
+  }
+  .skill-group-label {
+    font-size: 11px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--hint); margin-bottom: .6rem;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag {
+    font-size: 12px; color: var(--muted);
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: 6px; padding: 3px 9px;
+  }
+
+  /* PROJECTS */
+  .projects { display: flex; flex-direction: column; gap: 12px; }
+  .proj-card {
+    background: #fff;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.1rem 1.25rem;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .proj-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  }
+  .proj-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .proj-name { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+  .proj-tools { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px; }
+  .proj-tool {
+    font-size: 11px; color: var(--accent);
+    background: var(--accent-light);
+    padding: 2px 8px; border-radius: 5px; font-weight: 500;
+  }
+  .proj-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-top: .6rem; }
+  .proj-icon { font-size: 22px; color: var(--border-strong); margin-left: 8px; flex-shrink: 0; }
+
+  /* EDUCATION */
+  .edu-item {
+    display: flex; gap: 14px; padding: .9rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--hint); margin-top: 8px; flex-shrink: 0;
+  }
+  .edu-title { font-size: 15px; font-weight: 500; }
+  .edu-sub { font-size: 13px; color: var(--muted); margin-top: 2px; line-height: 1.6; }
+
+  /* CONTACT */
+  .contact-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    display: flex; flex-wrap: wrap;
+    gap: 1.5rem; align-items: center;
+    justify-content: space-between;
+  }
+  .contact-left { display: flex; align-items: center; gap: 16px; }
+  .avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--accent-light);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 500; flex-shrink: 0;
+  }
+  .contact-rows { display: flex; flex-direction: column; gap: 5px; }
+  .contact-row { display: flex; align-items: center; gap: 7px; font-size: 14px; color: var(--muted); }
+  .contact-row svg { width: 15px; height: 15px; opacity: .6; flex-shrink: 0; }
+  .contact-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 13px; color: var(--hint);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-tag { animation: fadeUp .5s ease both; }
+  .hero h1 { animation: fadeUp .5s .08s ease both; }
+  .hero-sub { animation: fadeUp .5s .16s ease both; }
+  .hero-meta { animation: fadeUp .5s .22s ease both; }
+  .cta-row { animation: fadeUp .5s .28s ease both; }
+
+  @media (max-width: 540px) {
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+    .hero { padding: 3rem 0 2.5rem; }
+    .contact-left { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Nirmala Saini</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="hero-tag">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="5" fill="#2a4a3e"/></svg>
+      Data Analyst
+    </div>
+    <h1>Hi, I'm Nirmala.<br><span>I turn data into stories.</span></h1>
+    <p class="hero-sub">Aspiring data analyst skilled in Python, SQL, Power BI, and Tableau. I build interactive dashboards, perform exploratory analysis, and generate business insights from complex datasets.</p>
+    <div class="hero-meta">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-4-4-7-7.5-7-11a7 7 0 0114 0c0 3.5-3 7-7 11z"/><circle cx="12" cy="10" r="2"/></svg>
+        Faridabad, Haryana
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Kalinga University
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Open to opportunities
+      </span>
+    </div>
+    <div class="cta-row">
+      <a href="mailto:nirmala.saini0916@gmail.com" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get in touch
+      </a>
+      <a href="https://github.com/YOUR_GITHUB" target="_blank" class="btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.003 10.003 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+        GitHub
+      </a>
+      <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" class="btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="sec-label">Technical skills</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <p class="skill-group-label">Languages</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Libraries</p>
+        <div class="tags">
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">BI & Visualization</p>
+        <div class="tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">Excel</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Tools</p>
+        <div class="tags">
+          <span class="tag">MySQL</span>
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Jupyter</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Expertise</p>
+        <div class="tags">
+          <span class="tag">EDA</span>
+          <span class="tag">Data Cleaning</span>
+          <span class="tag">Dashboard Design</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="sec-label">Projects</p>
+    <div class="projects">
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div>
+            <p class="proj-name">HR Analytics Dashboard</p>
+            <div class="proj-tools"><span class="proj-tool">Power BI</span></div>
+          </div>
+          <svg class="proj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <p class="proj-desc">Built an interactive dashboard to analyze employee attrition, department performance, and workforce trends — helping HR teams make data-driven decisions.</p>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div>
+            <p class="proj-name">Netflix Content Analysis</p>
+            <div class="proj-tools"><span class="proj-tool">Python</span><span class="proj-tool">Tableau</span></div>
+          </div>
+          <svg class="proj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <p class="proj-desc">Performed EDA on Netflix's catalog using Python and built Tableau dashboards to surface content trends, genre distribution, and release patterns.</p>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div>
+            <p class="proj-name">Amazon Sales Data Analysis</p>
+            <div class="proj-tools"><span class="proj-tool">SQL</span><span class="proj-tool">Python</span><span class="proj-tool">Power BI</span></div>
+          </div>
+          <svg class="proj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        </div>
+        <p class="proj-desc">Analyzed sales trends and product performance across categories using SQL and Python, with Power BI dashboards for executive-level reporting.</p>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div>
+            <p class="proj-name">Customer Churn Analysis</p>
+            <div class="proj-tools"><span class="proj-tool">SQL</span><span class="proj-tool">Python</span></div>
+          </div>
+          <svg class="proj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="18" y1="8" x2="23" y2="13"/><line x1="23" y1="8" x2="18" y2="13"/></svg>
+        </div>
+        <p class="proj-desc">Identified customer churn patterns from data using SQL and Python, and visualized retention metrics to support business strategy decisions.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section>
+    <p class="sec-label">Education</p>
+    <div class="edu-item">
+      <div class="edu-dot"></div>
+      <div>
+        <p class="edu-title">Bachelor's Degree — Kalinga University, Raipur</p>
+        <p class="edu-sub">Currently pursuing · Data Analytics, Statistics, Database Management Systems, Business Intelligence</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="sec-label">Get in touch</p>
+    <div class="contact-card">
+      <div class="contact-left">
+        <div class="avatar">NS</div>
+        <div class="contact-rows">
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            nirmala.saini0916@gmail.com
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.16a16 16 0 006.93 6.93l1.52-1.52a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            +91-9310317417
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-4-4-7-7.5-7-11a7 7 0 0114 0c0 3.5-3 7-7 11z"/><circle cx="12" cy="10" r="2"/></svg>
+            Faridabad, Haryana, India
+          </div>
+        </div>
+      </div>
+      <div class="contact-btns">
+        <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" class="btn">LinkedIn</a>
+        <a href="https://github.com/YOUR_GITHUB" target="_blank" class="btn">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    Designed & built by Nirmala Saini · 2025
+  </div>
+</footer>
+
+</body>
+</html>
